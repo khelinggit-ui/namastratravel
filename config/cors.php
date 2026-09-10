@@ -23,7 +23,7 @@ return [
         'trim',
         explode(',', env(
             'CORS_ALLOWED_ORIGINS',
-            'http://localhost:5173,http://127.0.0.1:5173,https://namastratravel.my.id'
+            'https://namastratravel.com,https://www.namastratravel.com,https://namastratravel.my.id,https://admin.namastratravel.my.id,http://localhost:5173,http://127.0.0.1:5173'
         )
     )))),
 
