@@ -23,7 +23,7 @@ Route::prefix('admin')->group(function () {
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
     Route::middleware('auth')->group(function () {
-        Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+        Route::get('/', [AdminDashboardController::class, 'index'])->name('admin');
 
         Route::resource('tours', AdminTourController::class)->names('admin.tours');
         Route::resource('destinations', AdminDestinationController::class)->names('admin.destinations');
