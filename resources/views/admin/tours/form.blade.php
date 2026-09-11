@@ -34,7 +34,7 @@
 
         <section class="editor-card">
           <div class="editor-card-heading"><div><span class="editor-kicker">02 · Konten</span><h2>Ceritakan paketnya</h2><p>Gunakan deskripsi dan highlight untuk membangun ekspektasi yang jelas.</p></div></div>
-          <div class="field"><label>Deskripsi paket</label><div id="description-editor">{!! old('description', $tour->description) !!}</div><textarea id="description-input" name="description" hidden>{{ old('description', $tour->description) }}</textarea></div>
+          <div class="field"><label>Deskripsi paket</label><div id="description-editor"></div><textarea id="description-input" name="description" hidden>{{ old('description', $tour->description) }}</textarea></div>
           <div class="field editor-field-last"><label for="tour-highlights">Highlight <span class="field-help">Satu poin per baris</span></label><textarea id="tour-highlights" name="highlights" rows="5" placeholder="Sunrise point terbaik\nTransportasi selama tour\nGuide berpengalaman">{{ old('highlights', $tour->highlights ? implode("\n", $tour->highlights) : '') }}</textarea></div>
         </section>
 
@@ -109,6 +109,7 @@
   const toolbar = [[{ header: [2, 3, false] }], ['bold', 'italic', 'underline', 'strike'], [{ list: 'ordered' }, { list: 'bullet' }], ['blockquote', 'link'], ['clean']]
   const descriptionInput = document.querySelector('#description-input')
   const descriptionEditor = new Quill('#description-editor', { theme: 'snow', placeholder: 'Tulis deskripsi paket...', modules: { toolbar } })
+  if (descriptionInput.value) descriptionEditor.clipboard.dangerouslyPasteHTML(descriptionInput.value)
   let itineraryIndex = itineraryItems.children.length
   const setupItineraryEditor = (row) => {
     const editor = new Quill(row.querySelector('.itinerary-editor'), { theme: 'snow', placeholder: 'Tulis detail perjalanan...', modules: { toolbar } })
