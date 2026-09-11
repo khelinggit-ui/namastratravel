@@ -11,11 +11,11 @@
 </head>
 <body>
   <aside class="sidebar">
-    <a href="{{ route('admin.dashboard') }}" class="brand">
+    <a href="{{ route('admin') }}" class="brand">
       <img src="{{ asset('namastratravel.png') }}" alt="Namastra Travel" class="brand-img">
     </a>
     <nav class="menu">
-      <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">Dashboard</a>
+      <a href="{{ route('admin') }}" class="{{ request()->routeIs('admin') ? 'active' : '' }}">Dashboard</a>
       <a href="{{ route('admin.tours.index') }}" class="{{ request()->routeIs('admin.tours.*') ? 'active' : '' }}">Tour</a>
       <a href="{{ route('admin.destinations.index') }}" class="{{ request()->routeIs('admin.destinations.*') ? 'active' : '' }}">Destinasi</a>
       <a href="{{ route('admin.posts.index') }}" class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">Blog / Artikel</a>
