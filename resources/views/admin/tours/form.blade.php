@@ -15,7 +15,7 @@
     <span class="tour-editor-state">{{ $tour->exists ? 'Mode edit' : 'Draft baru' }}</span>
   </div>
 
-  <form method="POST" action="{{ $tour->exists ? route('admin.tours.update', $tour) : route('admin.tours.store') }}" enctype="multipart/form-data">
+  <form id="tour-form" method="POST" action="{{ $tour->exists ? route('admin.tours.update', $tour) : route('admin.tours.store') }}" enctype="multipart/form-data">
     @csrf
     @if ($tour->exists) @method('PUT') @endif
     <div class="tour-editor-layout">
@@ -161,6 +161,6 @@
       item.classList.add('is-removed')
     })
   })
-  document.querySelector('form').addEventListener('submit', () => { descriptionInput.value = descriptionEditor.root.innerHTML; document.querySelectorAll('.itinerary-form-row').forEach((row) => { const editor = row.querySelector('.ql-editor'); row.querySelector('.itinerary-input').value = editor ? editor.innerHTML : '' }) })
+  document.querySelector('#tour-form').addEventListener('submit', () => { descriptionInput.value = descriptionEditor.root.innerHTML; document.querySelectorAll('.itinerary-form-row').forEach((row) => { const editor = row.querySelector('.ql-editor'); row.querySelector('.itinerary-input').value = editor ? editor.innerHTML : '' }) })
 </script>
 @endpush
