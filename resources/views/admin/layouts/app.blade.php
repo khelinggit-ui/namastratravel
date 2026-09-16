@@ -14,7 +14,10 @@
     <a href="{{ route('admin') }}" class="brand">
       <img src="{{ asset('namastratravel.png') }}" alt="Namastra Travel" class="brand-img">
     </a>
-    <nav class="menu">
+    <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="admin-menu" aria-label="Buka menu navigasi">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="menu" id="admin-menu">
       <a href="{{ route('admin') }}" class="{{ request()->routeIs('admin') ? 'active' : '' }}">Dashboard</a>
       <a href="{{ route('admin.tours.index') }}" class="{{ request()->routeIs('admin.tours.*') ? 'active' : '' }}">Tour</a>
       <a href="{{ route('admin.destinations.index') }}" class="{{ request()->routeIs('admin.destinations.*') ? 'active' : '' }}">Destinasi</a>
@@ -33,6 +36,7 @@
       </form>
     </div>
   </aside>
+  <button class="sidebar-overlay" type="button" aria-label="Tutup menu navigasi"></button>
   <div class="main">
     <header class="topbar">
       <div class="page-title">@yield('page', 'Admin')</div>
@@ -56,6 +60,27 @@
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
+  <script>
+    (() => {
+      const sidebar = document.querySelector('.sidebar')
+      const toggle = document.querySelector('.mobile-menu-toggle')
+      const overlay = document.querySelector('.sidebar-overlay')
+      const menuLinks = document.querySelectorAll('.menu a')
+
+      if (!sidebar || !toggle || !overlay) return
+
+      const setMenuState = (isOpen) => {
+        sidebar.classList.toggle('is-open', isOpen)
+        overlay.classList.toggle('is-visible', isOpen)
+        toggle.setAttribute('aria-expanded', String(isOpen))
+        toggle.setAttribute('aria-label', isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi')
+      }
+
+      toggle.addEventListener('click', () => setMenuState(!sidebar.classList.contains('is-open')))
+      overlay.addEventListener('click', () => setMenuState(false))
+      menuLinks.forEach((link) => link.addEventListener('click', () => setMenuState(false)))
+    })()
+  </script>
   @stack('scripts')
 </body>
 </html>
