@@ -50,6 +50,8 @@
             <option value="dihubungi" @selected($booking->status==='dihubungi')>Dihubungi</option>
             <option value="selesai" @selected($booking->status==='selesai')>Selesai</option>
           </select>
+          <label class="detail-field-label detail-status-message-label" for="admin_message">Pesan untuk customer <span class="muted">(tampil saat status "Dihubungi")</span></label>
+          <textarea name="admin_message" id="admin_message" rows="4" placeholder="Contoh: Kami sudah menghubungi Anda via WhatsApp, mohon konfirmasi tanggal keberangkatan.">{{ old('admin_message', $booking->admin_message) }}</textarea>
           <button class="btn btn-primary">Simpan status</button>
         </form>
       </section>

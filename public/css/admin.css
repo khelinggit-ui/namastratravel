@@ -175,7 +175,11 @@ code { background: var(--surface); border: 1px solid var(--border); border-radiu
 .detail-field-wide { grid-column: 1 / -1; }
 .detail-status-form { display: grid; grid-template-columns: 1fr 170px auto; align-items: center; gap: 14px; }
 .detail-status-form p { margin: 3px 0 0; }
-.detail-status-form select { width: 100%; }
+.detail-status-form > div:first-child { order: 1; }
+.detail-status-form select { order: 2; width: 100%; }
+.detail-status-message-label { order: 3; grid-column: 1 / -1; margin: 0; }
+.detail-status-form textarea { order: 4; grid-column: 1 / -1; width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font: inherit; color: var(--ink); resize: vertical; }
+.detail-status-form button { order: 5; }
 .payment-card { margin: 0; border-top: 3px solid var(--green); padding: 22px 24px; }
 .payment-mark { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: #eafaf1; color: var(--green); font-weight: 700; }
 .payment-amount { border-bottom: 1px solid var(--border); padding: 3px 0 17px; margin-bottom: 16px; }

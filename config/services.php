@@ -7,6 +7,7 @@ return [
         'username' => env('CASHUP_USERNAME'),
         'password' => env('CASHUP_PASSWORD'),
         'device_id' => env('CASHUP_DEVICE_ID'),
+        'api_key' => env('CASHUP_API_KEY'),
         'auth_scheme' => env('CASHUP_AUTH_SCHEME', ''),
         'callback_url' => env('CASHUP_CALLBACK_URL'),
         'redirect_url' => env('CASHUP_REDIRECT_URL'),

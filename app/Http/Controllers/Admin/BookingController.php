@@ -45,7 +45,10 @@ class BookingController extends Controller
 
     public function update(Request $request, Booking $booking)
     {
-        $data = $request->validate(['status' => 'required|in:baru,dihubungi,selesai']);
+        $data = $request->validate([
+            'status' => 'required|in:baru,dihubungi,selesai',
+            'admin_message' => 'nullable|string|max:2000',
+        ]);
         $booking->update($data);
 
         if ($request->has('from') && $request->input('from') === 'index') {

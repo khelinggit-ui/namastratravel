@@ -10,7 +10,7 @@ class Booking extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'customer_name', 'tour_name', 'whatsapp', 'email', 'destination', 'pax', 'planned_date', 'status',
+        'user_id', 'customer_name', 'tour_name', 'whatsapp', 'email', 'destination', 'pax', 'planned_date', 'status', 'admin_message',
         'payment_status', 'payment_provider', 'payment_order_id', 'payment_invoice_number',
         'payment_amount', 'payment_url', 'paid_at',
     ];

@@ -64,7 +64,8 @@ class CashupService
 
     private function client()
     {
-        return Http::acceptJson()->asJson()->timeout(30);
+        return Http::acceptJson()->asJson()->timeout(30)
+            ->withHeaders(['Api-Key' => config('services.cashup.api_key')]);
     }
 
     private function url(string $path): string
