@@ -28,7 +28,7 @@ button { cursor: pointer; font-family: inherit; }
 .menu .pill { background: var(--red); color: #fff; border-radius: 99px; padding: 1px 8px; font-size: 11px; }
 .sidebar-foot { border-top: 1px solid var(--border); padding-top: 14px; font-size: 12px; color: var(--body); }
 .btn-ghost { background: none; border: none; color: var(--red); font-weight: 600; padding: 0; }
-.main { margin-left: 230px; min-height: 100vh; }
+.main { margin-left: 230px; min-height: 100vh; min-width: 0; }
 .topbar { display: flex; align-items: center; justify-content: space-between; background: #fff; border-bottom: 1px solid var(--border); padding: 16px 28px; position: sticky; top: 0; z-index: 10; }
 .page-title { font-family: 'Poppins'; font-weight: 600; font-size: 17px; }
 .content { padding: 26px 28px 60px; }
@@ -129,7 +129,8 @@ code { background: var(--surface); border: 1px solid var(--border); border-radiu
 .booking-toolbar p { margin: 2px 0 0; }
 .booking-filters { display: grid; grid-template-columns: minmax(190px, 1.3fr) 150px 150px auto; gap: 8px; width: min(670px, 100%); }
 .booking-filters input, .booking-filters select { min-width: 0; padding: 9px 10px; }
-.booking-table-wrap { box-shadow: 0 8px 24px rgba(74,74,76,.04); }
+.booking-table-wrap { box-shadow: 0 8px 24px rgba(74,74,76,.04); overflow-x: auto; }
+.booking-table { min-width: 820px; }
 .booking-table th { white-space: nowrap; }
 .booking-table td { padding: 14px 16px; }
 .booking-table tbody tr:hover { background: #fbfdfb; }
@@ -247,10 +248,21 @@ code { background: var(--surface); border: 1px solid var(--border); border-radiu
   .editor-actions { grid-column: 1 / -1; }
 }
 @media (max-width: 680px) {
+  .topbar { align-items: flex-start; flex-wrap: wrap; gap: 10px; padding: 13px 16px; }
+  .top-actions { width: 100%; }
+  .top-actions .btn { width: 100%; justify-content: center; }
+  .content { padding: 20px 16px 40px; }
+  .alert { margin: 14px 16px 0; }
   .booking-header { align-items: flex-start; flex-direction: column; gap: 10px; }
   .booking-header h1 { font-size: 24px; }
-  .booking-filters { grid-template-columns: 1fr 1fr; }
-  .booking-filters input, .booking-filters button { grid-column: 1 / -1; }
+  .booking-header-note { white-space: normal; }
+  .booking-stats { gap: 10px; }
+  .booking-stat { padding: 14px; }
+  .booking-stat strong { font-size: 21px; }
+  .booking-toolbar { padding: 14px; }
+  .booking-filters { grid-template-columns: 1fr; }
+  .booking-filters input, .booking-filters button { grid-column: auto; }
+  .booking-filters .btn { width: 100%; justify-content: center; }
   .detail-hero-card { align-items: flex-start; flex-direction: column; padding: 20px; }
   .detail-hero-card h1 { font-size: 21px; }
   .detail-hero-status { align-items: flex-start; }
@@ -271,10 +283,11 @@ code { background: var(--surface); border: 1px solid var(--border); border-radiu
 .login-card .brand { justify-content: center; margin-bottom: 20px; }
 
 @media (max-width: 860px) {
-  .sidebar { position: static; width: 100%; flex-direction: row; flex-wrap: wrap; }
+  .sidebar { position: static; width: 100%; flex-direction: column; padding: 14px 16px 12px; }
   .main { margin-left: 0; }
-  .menu { flex-direction: row; flex-wrap: wrap; }
-  .menu a { padding: 8px 10px; }
+  .brand { margin-bottom: 12px; }
+  .menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; width: 100%; }
+  .menu a { min-width: 0; padding: 9px 10px; }
   .sidebar-foot { display: none; }
   .form-grid { grid-template-columns: 1fr; }
 }
