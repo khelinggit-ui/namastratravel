@@ -27,6 +27,7 @@ button { cursor: pointer; font-family: inherit; }
 .menu a:hover { background: var(--surface); color: var(--ink); }
 .menu a.active { background: var(--gradient); color: #fff; }
 .menu .pill { background: var(--red); color: #fff; border-radius: 99px; padding: 1px 8px; font-size: 11px; }
+.menu-section { margin: 16px 12px 4px; color: var(--body); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .sidebar-foot { border-top: 1px solid var(--border); padding-top: 14px; font-size: 12px; color: var(--body); }
 .btn-ghost { background: none; border: none; color: var(--red); font-weight: 600; padding: 0; }
 .main { margin-left: 230px; min-height: 100vh; min-width: 0; }
@@ -84,6 +85,12 @@ tr:last-child td { border-bottom: none; }
 .form-grid .full { grid-column: 1 / -1; }
 .field { margin-bottom: 14px; }
 .form-actions { display: flex; gap: 10px; margin-top: 18px; }
+.master-banner-thumb { width: 112px; height: 64px; }
+.master-actions { white-space: nowrap; }
+.master-actions form { display: inline; }
+.master-form-card { max-width: 820px; }
+.master-active-toggle { margin: 0; }
+.master-active-toggle input { width: auto; }
 .gallery-thumbs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
 .gallery-thumbs .g-item { position: relative; }
 .gallery-thumbs img { width: 112px; height: 82px; object-fit: cover; border-radius: 8px; display: block; }
@@ -295,6 +302,7 @@ code { background: var(--surface); border: 1px solid var(--border); border-radiu
   .mobile-menu-toggle span { display: block; width: 20px; height: 2px; border-radius: 2px; background: var(--ink); }
   .menu { position: fixed; z-index: 31; top: 66px; right: 0; left: 0; display: none; width: 100%; flex: none; gap: 3px; padding: 10px 16px 14px; background: #fff; border-bottom: 1px solid var(--border); box-shadow: 0 12px 24px rgba(74,74,76,.1); }
   .sidebar.is-open .menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .menu-section { grid-column: 1 / -1; margin: 7px 10px 0; }
   .menu a { min-width: 0; min-height: 38px; padding: 8px 10px; }
   .sidebar-overlay.is-visible { display: block; position: fixed; z-index: 20; inset: 66px 0 0; border: 0; background: rgba(20, 35, 27, .22); }
   .content { padding-top: 20px; }

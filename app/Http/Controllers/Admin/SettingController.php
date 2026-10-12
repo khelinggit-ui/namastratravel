@@ -15,7 +15,9 @@ class SettingController extends Controller
 
     public function edit()
     {
-        return view('admin.settings.edit', ['settings' => Setting::getMany($this->keys)]);
+        return view('admin.settings.edit', [
+            'settings' => Setting::getMany($this->keys),
+        ]);
     }
 
     public function update(Request $request)
@@ -33,6 +35,7 @@ class SettingController extends Controller
             'tiktok' => 'nullable|string|max:255',
             'maps_embed_url' => 'nullable|string',
         ]);
+
         Setting::setMany($data);
 
         return redirect()->route('admin.settings')->with('success', 'Pengaturan disimpan.');

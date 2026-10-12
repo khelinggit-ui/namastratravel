@@ -24,6 +24,7 @@ class Setting extends Model
             'tiktok' => '',
             'maps_embed_url' => '',
         ];
+
         return array_merge($defaults, $rows);
     }
 

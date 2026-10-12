@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\HeroBanner;
 use App\Models\Setting;
+use App\Support\Media;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -15,17 +17,17 @@ class SettingController extends Controller
 
     public function show()
     {
-        return response()->json(Setting::getMany($this->keys));
+        return response()->json($this->settingsWithBanners());
     }
 
     public function adminShow()
     {
-        return response()->json(Setting::getMany($this->keys));
+        return response()->json($this->settingsWithBanners());
     }
 
     public function update(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'name' => 'nullable|string|max:255',
             'tagline' => 'nullable|string|max:255',
             'address' => 'nullable|string',
@@ -41,6 +43,22 @@ class SettingController extends Controller
 
         Setting::setMany($request->only($this->keys));
 
-        return response()->json(Setting::getMany($this->keys));
+        return response()->json($this->settingsWithBanners());
+    }
+
+    private function settingsWithBanners(): array
+    {
+        $settings = Setting::getMany($this->keys);
+        $settings['hero_banners'] = HeroBanner::query()
+            ->where('is_active', true)
+            ->orderBy('sort')
+            ->orderBy('id')
+            ->get()
+            ->map(fn (HeroBanner $banner) => Media::url($banner->image))
+            ->filter()
+            ->values()
+            ->all();
+
+        return $settings;
     }
 }

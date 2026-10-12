@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\DestinationController as AdminDestinationController;
+use App\Http\Controllers\Admin\HeroBannerController as AdminHeroBannerController;
+use App\Http\Controllers\Admin\MasterUserController as AdminMasterUserController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\SettingController as AdminSettingController;
 use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
@@ -22,8 +24,11 @@ Route::prefix('admin')->group(function () {
 
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
-    Route::middleware('auth')->group(function () {
+    Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/', [AdminDashboardController::class, 'index'])->name('admin');
+
+        Route::resource('master/banners', AdminHeroBannerController::class)->names('admin.master.banners')->except(['show']);
+        Route::resource('master/users', AdminMasterUserController::class)->names('admin.master.users')->except(['show']);
 
         Route::resource('tours', AdminTourController::class)->names('admin.tours');
         Route::resource('destinations', AdminDestinationController::class)->names('admin.destinations');

@@ -27,6 +27,9 @@
       <a href="{{ route('admin.contacts.index') }}" class="{{ request()->routeIs('admin.contacts.*') ? 'active' : '' }}">Kontak Masuk</a>
       <a href="{{ route('admin.about') }}" class="{{ request()->routeIs('admin.about') ? 'active' : '' }}">Tentang Kami</a>
       <a href="{{ route('admin.settings') }}" class="{{ request()->routeIs('admin.settings') ? 'active' : '' }}">Pengaturan</a>
+      <span class="menu-section">Master</span>
+      <a href="{{ route('admin.master.banners.index') }}" class="{{ request()->routeIs('admin.master.banners.*') ? 'active' : '' }}">Banner Hero</a>
+      <a href="{{ route('admin.master.users.index') }}" class="{{ request()->routeIs('admin.master.users.*') ? 'active' : '' }}">Management User</a>
     </nav>
     <div class="sidebar-foot">
       <span>{{ auth()->user()->email }}</span>
